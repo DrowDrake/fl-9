@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.mainWrapper {
+    width: 650px;
+    height: 520px;
+    border: 1px solid #000;
+    padding: 20px;
+    margin: 50px auto;
+    position: relative;
+}
+
+.todoList {
+    text-align: center;
+    font-weight: normal;
+}
+
+.warning {
+    text-align: center;
+    color: #ff0000;
+    display: none;
+}
+
+.divInput {
+    margin-right: 10px;
+    border: 1px solid #000;
+    padding: 2px 5px;
+}
+
+.material-icons {
+    font-size: 28px;
+}
+
+.divInput::placeholder {
+    color: #bbb;
+}
+
+.addLine {
+    width: 100%;
+    border: 1px solid #000;
+    margin: 10px 0;
+}
+
+.mainList {
+    list-style: none;
+}
+
+.list-item {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    cursor: move;
+    margin-bottom: 5px;
+}
+
+button {
+    border: 0;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.delete-btn {
+    margin-left: auto;
+}
+
+.catImg {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    bottom: 10px;
+    margin: 0 45%;
+}
+
+.workDiv {
+    display: grid;
+    grid-template-columns: 95% 5%;
+    padding: 10px 0;
+    height: 40px;
+}
