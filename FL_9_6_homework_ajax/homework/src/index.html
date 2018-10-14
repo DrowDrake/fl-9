@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>FL 9 3 homework AJAX</title>
+</head>
+<body>
+  <div id="main" class="mainWrapper">
+    <h1 class="title">Location</h1>
+    <h3 class="info">Please enter Latitude & Longitude to check the location</h3>
+    <form class="formStyle">
+      <input type="text" name="latitude" placeholder="Latitude">
+      <input type="text" name="longitude" placeholder="Longitude">
+      <input type="button" name="result" value="Result">
+    </form>
+  </div>
+
+  <div id="dotsLoader" class="transition-loader">
+    <div class="transition-loader-inner">
+      <label></label>
+      <label></label>
+      <label></label>
+      <label></label>
+      <label></label>
+      <label></label>
+    </div>
+  </div>
+
+  <div id="water">
+    <div class="waterTitle">WATER</div>
+  </div>
+  <div id="land">
+    <div class="landTitle">LAND</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

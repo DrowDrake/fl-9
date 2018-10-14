@@ -1,0 +1,154 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+
+body {
+    height: 639px;
+    background: linear-gradient(rgb(109, 242, 229), rgb(153, 228, 77), rgb(206, 152, 59)) no-repeat;
+}
+
+.mainWrapper {
+    width: 700px;
+    padding: 20px;
+    margin: 300px auto;
+    border: 1px solid rgb(43, 117, 21);
+}
+
+#main {
+    display: block;
+}
+
+.showHide, .formStyle {
+    display: grid;
+}
+
+.formStyle {
+    margin-top: 30px;
+    width: 90%;
+}
+
+input[type='text'] {
+    margin-top: 10px;
+    padding-left: 5px;
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+    font-size: x-large;
+
+}
+
+input[type='button'] {
+    margin-top: 10px;
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    font-size: large;
+    background-color: rgb(206, 127, 53);
+    color: rgb(231, 201, 95);
+}
+
+input[type='text']::placeholder {
+    color: rgb(14, 157, 205);
+}
+
+input[type='button']:hover {
+    background-color: rgb(194, 119, 39);
+}
+
+input[type='button']:active {
+    background-color: rgb(100, 127, 20);
+}
+
+.title, .info {
+    text-align: center;
+    margin-top: 10px;
+    color: rgb(14, 157, 205);
+}
+
+.transition-loader {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    width: 100%;
+}
+#dotsLoader {
+    display: none;
+}
+
+.transition-loader-inner {
+    width: calc(100% - 200px);
+    color: rgb(255, 255, 255);
+    padding: 0 100px;
+    text-align: center;
+}
+.transition-loader-inner label {
+    padding: 1%;
+    opacity: 0;
+    display: inline-block;
+}
+.transition-loader-inner label:after {
+    content: '•';
+    font-size: xx-large;
+}
+
+.transition-loader-inner label:nth-child(1) {
+    animation: loader 3s 600ms infinite ease-in-out;
+}
+.transition-loader-inner label:nth-child(2) {
+    animation: loader 3s 500ms infinite ease-in-out;
+}
+.transition-loader-inner label:nth-child(3) {
+    animation: loader 3s 400ms infinite ease-in-out;
+}
+.transition-loader-inner label:nth-child(4) {
+    animation: loader 3s 300ms infinite ease-in-out;
+}
+.transition-loader-inner label:nth-child(5) {
+    animation: loader 3s 200ms infinite ease-in-out;
+}
+.transition-loader-inner label:nth-child(6) {
+    animation: loader 3s 100ms infinite ease-in-out;
+}
+
+@keyframes loader {
+    0% {
+        opacity: 0;
+        transform: translateX(-300px) scale(1);
+    }
+    33% {
+        opacity: 1;
+        transform: translateX(0px) scale(2);
+    }
+    66% {
+        opacity: 1;
+        transform: translateX(0px) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(300px) scale(2);
+    }
+}
+
+#water {
+    display: none;
+    position: fixed;
+    left: 30%;
+    top: 40%;
+    font-family: 'Bungee', cursive;
+    font-size: 200px;
+    color: rgb(109, 242, 229);
+}
+
+#land {
+    display: none;
+    position: fixed;
+    left: 30%;
+    top: 40%;
+    font-family: 'Bungee', cursive;
+    font-size: 200px;
+    color: rgb(206, 152, 59);
+}
