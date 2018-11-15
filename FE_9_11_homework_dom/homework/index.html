@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,24 +8,25 @@
   <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body>
-<div id="root">
-  <div class="mainWrapper">
-    <header>
-      <h1 class="todoList">TODO Cat List</h1>
-      <p class="warning">Maximum item per list are created</p>
-    </header>
-    <div class="workDiv">
-      <input type="text" name="addNewAction" placeholder="Add New Action" class="divInput">
-      <button class="btn" disabled><i class="material-icons">add_box</i></button>
+  <div id="root">
+    <div class="todo-list-container">
+      <header>
+        <h1 class="todo-header">TODO Cat List</h1>
+        <p class="max-item-warning">Maximum item per list are created</p>
+      </header>
+      <div class="add-item-container">
+        <input type="text" name="addNewAction" placeholder="Add New Action" class="input-new-item">
+        <button class="add-btn" disabled><i class="material-icons">add_box</i></button>
+      </div>      
+      <hr class="todo-separator">
+      <ul class="todo-list">
+      </ul>
+      <footer>
+        <img class="cat-img" src="./assets/img/cat.png" alt="Cat Logo">
+      </footer>
     </div>
-    <hr class="addLine">
-    <ul class="mainList">
-    </ul>
-    <footer>
-      <img class="catImg" src="./assets/img/cat.png" alt="Cat Foot">
-    </footer>
   </div>
-</div>
-<script src="./src/app.js"></script>
+
+  <script src="./src/app.js"></script>
 </body>
 </html>

@@ -1,67 +1,100 @@
-const newButton = document.querySelector('.btn');
-const mainList = document.querySelector('.mainList');
-const addInput = document.querySelector('.divInput');
-const warn = document.querySelector('.warning');
+let listItemCounter = 0;
+let listMaxItems = 10;
 
-newButton.onclick = () => {
-    mainWork(addInput.value);
-}
+const addItemButton = document.querySelector('.add-btn');
+const toDoList = document.querySelector('.todo-list');
+const inputNewItem = document.querySelector('.input-new-item');
+const maxListItems = document.querySelector('.max-item-warning');
 
-let counter = 0, maxCounter = 10;
-const mainWork = newTextWork => {
-    const nLi = document.createElement('li');
-    const createP = document.createElement('p');
-    const boxIcon = document.createElement('i');
-    const buttonCheck = document.createElement('button');
-    const delI = document.createElement('i');
-    const delNewBtn = document.createElement('button');
+inputNewItem.onchange = inputNewItem.onkeyup = e => {
+  const newTaskText = inputNewItem.value.trim();
 
-    nLi.setAttribute('class', 'list-item');
-    boxIcon.setAttribute('class', 'material-icons');
-    buttonCheck.setAttribute('class', 'checkbox-btn');
-    delI.setAttribute('class', 'material-icons');
-    delNewBtn.setAttribute('class', 'delete-btn');
+  newTaskText ? addItemButton.disabled = false : addItemButton.disabled = true;
 
-
-    if (maxCounter <= ++counter ) {
-        addInput.disabled = true;
-        warn.style.display = 'block';
+  if (e.key === 'Enter') {
+    if (newTaskText) {
+      addTask(newTaskText);
     }
-
-    buttonCheck.onclick = () => {
-        boxIcon.textContent = 'check_box';
-    };
-
-    delNewBtn.onclick = () => {
-        nLi.remove();
-
-        addInput.disabled = false;
-        counter--;
-        warn.style.display = 'none';
-    };
-
-    addInput.value = '';
-    newButton.disabled = true;
-
-    createP.appendChild(document.createTextNode(newTextWork));
-    boxIcon.appendChild(document.createTextNode('check_box_outline_blank'));
-    delI.appendChild(document.createTextNode('delete'));
-    buttonCheck.appendChild(boxIcon);
-    buttonCheck.appendChild(createP);
-    delNewBtn.appendChild(delI);
-    nLi.appendChild(buttonCheck);
-    nLi.appendChild(delNewBtn);
-    mainList.appendChild(nLi);
-}
-
-addInput.onchange = addInput.onkeyup = e => {
-    const newTextWork = addInput.value;
-
-    newTextWork ? newButton.disabled = false : newButton.disabled = true;
-
-    if (e.key === 'Enter') {
-        if (newTextWork) {
-            mainWork(newTextWork);
-        }
-    }
+  }
 };
+
+addItemButton.onclick = () => {
+  addTask(inputNewItem.value.trim());
+}
+
+const addTask = newTaskText => {
+  const listItem = document.createElement('li');
+  listItem.setAttribute('class', 'list-item');
+  listItem.setAttribute('draggable', true);
+
+  const task = document.createElement('span');
+  task.appendChild(document.createTextNode(newTaskText));
+
+  const checkBox = document.createElement('i');
+  checkBox.setAttribute('class', 'material-icons');
+  checkBox.appendChild(document.createTextNode('check_box_outline_blank'));
+
+  const checkBtn = document.createElement('button');
+  checkBtn.setAttribute('class', 'checkbox-btn');
+
+  const deleteItem = document.createElement('i');
+  deleteItem.setAttribute('class', 'material-icons');
+  deleteItem.appendChild(document.createTextNode('delete'));
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.setAttribute('class', 'delete-btn');
+
+  checkBtn.appendChild(checkBox);
+  checkBtn.appendChild(task);
+  deleteBtn.appendChild(deleteItem);
+  listItem.appendChild(checkBtn);
+  listItem.appendChild(deleteBtn);
+  toDoList.appendChild(listItem);
+
+  listItemCounter++;
+
+  if (listMaxItems === listItemCounter ) {
+    inputNewItem.disabled = true;
+    maxListItems.style.display = 'block';
+  }
+
+  checkBtn.onclick = () => {
+    checkBox.textContent = 'check_box';
+  };
+
+  deleteBtn.onclick = () => {
+    listItem.remove();
+
+    inputNewItem.disabled = false;
+    listItemCounter--;
+    maxListItems.style.display = 'none';
+  };  
+
+  inputNewItem.value = '';
+  addItemButton.disabled = true
+}
+
+let dragAndDrop = null;
+
+toDoList.addEventListener('dragstart', e => {
+  dragAndDrop = e.target;
+});
+
+toDoList.addEventListener('dragover', e => {
+  if (e.target.className === 'list-item') {
+    e.preventDefault();
+    e.target.style.transform = 'translate(10px)';
+  }
+});
+
+toDoList.addEventListener('dragleave', e => {
+  e.target.style.transform = '';
+});
+
+toDoList.addEventListener('drop', e => {
+  if (e.target.className === 'list-item') {
+    e.preventDefault();
+    e.target.style.transform = '';
+    toDoList.insertBefore(dragAndDrop, e.target);
+  }
+});
